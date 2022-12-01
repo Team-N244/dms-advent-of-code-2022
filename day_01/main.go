@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -16,7 +17,7 @@ func main() {
 
 	scanner := bufio.NewScanner(fp)
 
-	mostCalsElf := 0
+	var elves []int
 	currentElfTotal := 0
 
 	for scanner.Scan() {
@@ -30,15 +31,25 @@ func main() {
 			currentElfTotal += cals
 			fmt.Printf("  Total is now: %d\n", currentElfTotal)
 		} else {
-			if currentElfTotal > mostCalsElf {
-				fmt.Printf("New High Score: %d beats %d\n", currentElfTotal, mostCalsElf)
-				mostCalsElf = currentElfTotal
-			}
+			elves = append(elves, currentElfTotal)
 			currentElfTotal = 0
 		}
 	}
 
-	fmt.Printf("\n\nThe Highest Total is: %d\n", mostCalsElf)
+	sort.Sort(sort.IntSlice(elves))
+
+	highestElf := elves[len(elves)-1]
+
+	fmt.Printf("\n\nThe Highest Total is: %d\n", highestElf)
+
+	topThree := elves[len(elves)-3:]
+	topTotal := 0
+	for _, element := range topThree {
+		topTotal += element
+	}
+
+	fmt.Printf("The Top Three are: %d\n", topThree)
+	fmt.Printf("The Top Three's Total is: %d\n", topTotal)
 
 	if err := scanner.Err(); err != nil {
 		panic("Error when reading file!")
