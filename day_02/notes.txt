@@ -1,0 +1,20 @@
+These are the possible choices:
+A = Opponent Playing Rock
+B = Opponent Playing Paper
+C = Opponent Playing Scissors
+
+X = You Play Rock     (1pt)
+Y = You Play Paper    (2pts)
+Z = You Play Scissors (3pts)
+
+A X -> 1pt + 3pt (draw)
+A Y -> 2pt + 6pt (win)
+A Z -> 3pt + 0pt (loss)
+
+B X -> 1pt + 0pt (loss)
+B Y -> 2pt + 3pt (draw)
+B Z -> 3pt + 6pt (win)
+
+C X -> 1pt + 6pt (win)
+C Y -> 2pt + 0pt (lose)
+C Z -> 3pt + 3pt (draw)
