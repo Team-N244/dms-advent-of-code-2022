@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const FILENAME = "input.txt"
+const FILENAME = "test_input.txt"
 
 // getCharPriority will return the Priority of the "item" identified by ch.
 func getCharPriority(ch int) int {
@@ -31,19 +31,24 @@ func main() {
 
 	var commonItem int = '!'
 	totalPriority := 0
+	var lines []string
 
 	for scanner.Scan() {
-		input := scanner.Text()
-		firstHalf := input[:len(input)/2]
-		secondHalf := input[len(input)/2:]
-		fmt.Printf("First : %s\nSecond: %s\n", firstHalf, secondHalf)
+		lines = append(lines, scanner.Text())
+	}
 
-		for _, ch := range firstHalf {
-			if strings.Contains(secondHalf, string(ch)) {
+	for i := 0; i < len(lines); i += 3 {
+		for _, ch := range lines[i] {
+			if strings.Contains(lines[i+1], string(ch)) && strings.Contains(lines[i+2],
+				string(ch)) {
+				fmt.Printf("The common item was: %s\n", string(ch))
 				commonItem = int(ch)
 				break
 			}
 		}
+		charPriority := getCharPriority(commonItem)
+		fmt.Printf("Adding %s's priority of %d to total priority.\n", string(commonItem),
+			charPriority)
 		totalPriority += getCharPriority(commonItem)
 	}
 
