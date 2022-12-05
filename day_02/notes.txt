@@ -18,3 +18,18 @@ B Z -> 3pt + 6pt (win)
 C X -> 1pt + 6pt (win)
 C Y -> 2pt + 0pt (lose)
 C Z -> 3pt + 3pt (draw)
+
+
+Now for Part 2:
+
+A X -> Opponent plays Rock, You need to lose (play Scissors for 3pts)
+A Y -> Opponent plays Rock, You need to draw (play Rock for 4pts)
+A Z -> Opponent plays Rock, You need to win  (play Paper for 8pts)
+
+B X -> Opponent plays Paper, You need to lose (play Rock for 1pt)
+B Y -> Opponent plays Paper, You need to draw (play Paper for 5pts)
+B Z -> Opponent plays Paper, You need to win  (play Scissors for 9pts)
+
+C X -> Opponent plays Scissors, you need to lose (play Paper for 2pts)
+C Y -> Opponent plays Scissors, you need to draw (play Scissors for 6pts)
+C Z -> Opponent plays Scissors, you need to win  (play Rock for 7pts)

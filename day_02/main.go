@@ -6,8 +6,10 @@ import (
 	"os"
 )
 
+const FILENAME = "input.txt"
+
 func main() {
-	fp, err := os.Open("input.txt")
+	fp, err := os.Open(FILENAME)
 	if err != nil {
 		panic("Could not read file!")
 	}
@@ -16,17 +18,17 @@ func main() {
 	scanner := bufio.NewScanner(fp)
 
 	var moves = map[string]int{
-		"A X": 4, // 1pt for playing Rock, 3pt for draw
-		"A Y": 8, // 2pt for playing Paper, 6pt for win
-		"A Z": 3, // 3pt for playing Scissors, 0pt for loss
+		"A X": 3, // Opponent playing Rock, Need to lose (0pt), play Scissors (3pt)
+		"A Y": 4, // Opponent playing Rock, Need to draw (3pt), play Rock (1pt)
+		"A Z": 8, // Opponent playing Rock, Need to win  (6pt), play Paper (2pt)
 
-		"B X": 1, // 1pt for playing Rock, 1pt for loss
-		"B Y": 5, // 2pt for playing Paper, 3pt for draw
-		"B Z": 9, // 3pt for playing Scissors, 6pt for win
+		"B X": 1, // Opponent playing Paper, Need to lose (0pt), play Rock (1pt)
+		"B Y": 5, // Opponent playing Paper, Need to draw (3pt), play Paper (2pt)
+		"B Z": 9, // Opponent playing Paper, Need to win  (6pt), play Scissors (3pt)
 
-		"C X": 7, // 1pt for playing Rock, 6pt for win
-		"C Y": 2, // 2pt for playing Paper, 0pt for loss
-		"C Z": 6, // 3pt for playing Scissors, 3pt for draw
+		"C X": 2, // Opponent playing Scissors, Need to lose (0pt), play Paper (2pt)
+		"C Y": 6, // Opponent playing Scissors, Need to draw (3pt), play Scissors (3pt)
+		"C Z": 7, // Opponent playing Scissors, Need to win  (6pt), play Rock (1pt)
 	}
 
 	pointTotal := 0
