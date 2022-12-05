@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const FILENAME = "test_input.txt"
+const FILENAME = "input.txt"
 
 // getCharPriority will return the Priority of the "item" identified by ch.
 func getCharPriority(ch int) int {
