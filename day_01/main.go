@@ -35,6 +35,9 @@ func main() {
 			currentElfTotal = 0
 		}
 	}
+  if currentElfTotal != 0 {
+    elves = append(elves, currentElfTotal)
+  }
 
 	sort.Sort(sort.IntSlice(elves))
 
